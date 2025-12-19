@@ -76,6 +76,7 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
         this._addItem(new MenuItem(_('About My System'), () => this._aboutThisDistro()));
         this._addItem(new MenuItem(_('Documentation'), () => this._documentation()));
+        this._addItem(new MenuItem(_('News...'), () => this._openNewsFlash()));
         this._addItem(new PopupMenu.PopupSeparatorMenuItem());
 
         this._addItem(new MenuItem(_('System Settings...'), () => this._systemPreferences()));
@@ -185,6 +186,10 @@ class LogoMenuMenuButton extends PanelMenu.Button {
 
     _openTerminal() {
         Util.trySpawnCommandLine(this._settings.get_string('menu-button-terminal'));
+    }
+
+    _openNewsFlash() {
+        Util.trySpawnCommandLine('flatpak run io.gitlab.news_flash.NewsFlash');
     }
 
     _openDistroShelf() {
